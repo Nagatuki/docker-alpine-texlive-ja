@@ -36,8 +36,8 @@ docker run --rm -itd -v ${PWD}:/workdir --name latex nagatuki/latex
 (The last command is for removing unwanted intermediate files.)
 
 ```bash
-docker exec latex latexmk
-docker exec latex latexmk -c
+docker exec latex latexmk [file_name]
+docker exec latex latexmk -c [file_name]
 ```
 
 - Operating from inside a container 
@@ -45,8 +45,8 @@ docker exec latex latexmk -c
 
 ```bash
 docker exec -it latex sh
-latexmk
-latexmk -c
+latexmk [file_name]
+latexmk -c [file_name]
 ```
 
 ### Stop a container
