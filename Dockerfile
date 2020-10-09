@@ -7,10 +7,12 @@
 FROM frolvlad/alpine-glibc:latest
 
 ENV PATH /usr/local/texlive/2020/bin/x86_64-linuxmusl:$PATH
+ENV HOME="/home/LaTeX"
 
-RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
-    apk add --no-cache --virtual .fetch-deps xz tar wget && \
-    mkdir /tmp/install-tl-unx && \
+RUN apk add --no-cache curl perl fontconfig-dev freetype-dev
+RUN apk add --no-cache --virtual .fetch-deps xz tar wget
+
+RUN mkdir /tmp/install-tl-unx && \
     curl -L ftp://tug.org/historic/systems/texlive/2020/install-tl-unx.tar.gz | \
       tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
     printf "%s\n" \
@@ -27,6 +29,9 @@ RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
       latexmk && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps
+
+RUN mkdir ${HOME}
+COPY ./.latexmkrc ${HOME}
 
 WORKDIR /workdir
 

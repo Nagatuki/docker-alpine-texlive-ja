@@ -8,36 +8,55 @@
 
 Clone from [Paperist/docker-alpine-texlive-ja](https://github.com/Paperist/docker-alpine-texlive-ja) \(under the MIT License\).
 
-<!-- ## Table of Contents
+## Table of Contents
 
 - [Install](#install)
 - [Usage](#usage)
-- [Contribute](#contribute)
 - [License](#license)
 
 ## Install
 
+Clone or download this repository and run a following command to build a docker image.
+
 ```bash
-docker pull paperist/alpine-texlive-ja
+docker build -t nagatuki/latex .
 ```
-
-## Contribute
-
-PRs accepted. -->
 
 ## Usage
 
-<!-- ```bash
-$ docker run --rm -it -v $PWD:/workdir paperist/alpine-texlive-ja
-$ latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
-``` -->
+### Launch a container
 
+```
+docker run --rm -itd -v ${PWD}:/workdir --name latex nagatuki/latex
+```
 
-## Font
+### Generate a pdf file
+
+- Operating from outside a container 
+(The last command is for removing unwanted intermediate files.)
+
+```bash
+docker exec latex latexmk
+docker exec latex latexmk -c
+```
+
+- Operating from inside a container 
+(The last command is for removing unwanted intermediate files.)
+
+```bash
+docker exec -it latex sh
+latexmk
+latexmk -c
+```
+
+### Stop a container
+
+```
+docker stop latex
+```
+
+## Additional Font
 
 ## License
 
 MIT © Nagatuki
-
-
-
