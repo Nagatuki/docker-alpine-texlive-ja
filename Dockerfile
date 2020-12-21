@@ -1,6 +1,6 @@
 # Copyright (c) 2016 Kaito Udagawa
 # Copyright (c) 2016-2020 3846masa
-# Copyright (c) 2020 3846masa
+# Copyright (c) 2020 Nagatuki
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
@@ -26,6 +26,9 @@ RUN mkdir /tmp/install-tl-unx && \
       collection-latexextra \
       collection-fontsrecommended \
       collection-langjapanese \
+      chemgreek \
+      mhchem \
+      siunitx \
       latexmk && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps

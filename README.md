@@ -55,7 +55,14 @@ latexmk -c [file_name]
 docker stop latex
 ```
 
+## Additional Packages
+
+- siunitx
+- mhchem
+- chemgreek
+
 ## Additional Font
+None
 
 ## License
 
